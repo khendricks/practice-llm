@@ -83,6 +83,11 @@ generated data and checkpoints are intentionally ignored by Git.
 
 ## AI collaboration
 
-Read [`AGENTS.md`](AGENTS.md) before contributing. Repository-specific Codex
-skills live in [`.agents/skills`](.agents/skills): `python-quality` applies the
-quality workflow, and `llm-experiment` records reproducibility requirements.
+Read [`AGENTS.md`](AGENTS.md) (Codex) or [`CLAUDE.md`](CLAUDE.md) (Claude
+Code) before contributing; both describe the same project rules for their
+respective tools. Repository-specific Codex skills live in
+[`.agents/skills`](.agents/skills): `python-quality` applies the quality
+workflow, and `llm-experiment` records reproducibility requirements. The
+Claude Code equivalents live in [`.claude/rules`](.claude/rules), and
+[`.claude/agents/architecture-reviewer.md`](.claude/agents/architecture-reviewer.md)
+is a subagent for reviewing changes against the architecture boundaries.
