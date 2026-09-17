@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage.xml
+htmlcov/
+
+# Generated training artifacts and local datasets
+data/raw/
+data/processed/
+artifacts/
+checkpoints/
+
+# Local configuration
+.env
