@@ -13,14 +13,8 @@ generation, and the chat UI will be added in the tracked GitHub issues.
 
 ## Setup
 
-Use Python 3.11 or newer. The project is configured for
-[uv](https://docs.astral.sh/uv/), although standard `pip` is also supported.
-
-```bash
-uv sync --extra dev
-```
-
-Or with `pip`:
+Use Python 3.11 or newer. Create an isolated virtual environment and install
+the project with its development tools:
 
 ```bash
 python -m venv .venv
@@ -31,7 +25,7 @@ python -m pip install -e ".[dev]"
 ## Run the API
 
 ```bash
-uv run uvicorn practice_llm.api.main:app --reload
+python -m uvicorn practice_llm.api.main:app --reload
 ```
 
 Open <http://127.0.0.1:8000/health> to confirm the server is ready.
@@ -39,9 +33,9 @@ Open <http://127.0.0.1:8000/health> to confirm the server is ready.
 ## Quality checks
 
 ```bash
-uv run ruff check .
-uv run mypy src
-uv run pytest
+python -m ruff check .
+python -m mypy src
+python -m pytest
 ```
 
 ## Data plan
