@@ -30,6 +30,42 @@ python -m uvicorn practice_llm.api.main:app --reload
 
 Open <http://127.0.0.1:8000/health> to confirm the server is ready.
 
+## Target chat request flow
+
+The components below will be added in the model, training, API, and web UI
+issues. This is the intended end-to-end boundary for a browser chat request.
+
+```mermaid
+sequenceDiagram
+    participant B as Browser<br/>static/index.html
+    participant A as app.py<br/>FastAPI
+    participant C as chat.py<br/>ChatService
+    participant Z as tokenizer.py<br/>Tokenizer
+    participant M as model.py<br/>MiniLLM
+    participant S as sampling.py<br/>sample_next_token()
+
+    B->>A: POST /chat {message, history}
+    A->>C: reply(message, history)
+
+    C->>C: format_prompt(history, message)
+    C->>Z: encode(prompt)
+    Z-->>C: input_ids
+
+    loop Generate up to max_new_tokens
+        C->>M: logits = model(input_ids)
+        M-->>C: next-token logits
+        C->>S: sample(logits, temperature, top_p)
+        S-->>C: next_token_id
+        C->>C: append token to input_ids
+    end
+
+    C->>Z: decode(generated_ids)
+    Z-->>C: assistant response
+    C-->>A: {reply, updated_history}
+    A-->>B: JSON response
+    B->>B: add messages to chat window
+```
+
 ## Quality checks
 
 ```bash
