@@ -14,6 +14,7 @@ over clever optimizations; explain non-obvious model math close to the code.
 
 @.claude/rules/architecture.md
 @.claude/rules/quality.md
+@.claude/rules/tdd.md
 @.claude/rules/experiments.md
 @.claude/rules/git.md
 

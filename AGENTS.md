@@ -22,6 +22,16 @@ optimizations; explain non-obvious model math close to the code.
 - Keep functions small, type public interfaces, and use descriptive names.
 - Preserve deterministic behavior where a seed is configured.
 
+## Test-driven development
+
+- For every behavior change, write a failing test first, confirm it fails
+  for the expected reason, then write the minimum code to pass it. Work in
+  small red-green-refactor cycles.
+- Exceptions: pure typed data holders with no behavior, project scaffolding,
+  and config/dependency wiring.
+- Refactors that preserve behavior don't need new tests but must not reduce
+  existing coverage.
+
 ## Change discipline
 
 - Keep commits scoped to one issue or a closely related fix.
